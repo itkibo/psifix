@@ -1,6 +1,7 @@
 # analyzer.ps1
 It helps to determine errors in data files  
 Fast determines missing files/parameters/hours and show result in matrix form  
+
 `result example:`
 ```
 prm (cnt\tot) | 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
