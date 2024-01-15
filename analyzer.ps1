@@ -19,6 +19,9 @@ if (-not(Test-Path -Path $source_path)) {
     exit
 }
 
+# info
+"source: $source_path" | Write-Host
+
 # create new csv file if option enabled
 # it will contain only existing file parameters
 if ($csv_save) {
@@ -30,7 +33,7 @@ if ($csv_save) {
 # key = parameter, value = array of hours
 # $prm_list will contain only existing parameters
 $prm_list = @{}
-foreach ($file in Get-Item -Path $source_path) {
+foreach ($file in ($files = Get-Item -Path $source_path)) {
 
     # file name example: 117-2235_2023-9-29_23
     # build row based on file name like: 117;2235;2023;9;29;23
@@ -49,6 +52,9 @@ foreach ($file in Get-Item -Path $source_path) {
     $prm_list[$key_prm].Add($val_hour)
 
 }  # foreach
+
+# show count files info
+"files detected: {0}/{1}" -f $files.Count, $($prm_const.Count*$hour_const.Count) | Write-Host
 
 # print matrix hours
 # $prm_list will contain all needed parameters, append empty parameters if needed
@@ -77,11 +83,11 @@ foreach ($prm in $prm_const) {
 
     # print matrix header
     if ($prm -eq $prm_const[0]) {
-        "{0} | {1}" -f ('prm (cnt\tot)'), (($hour_const | % { "{0:d2}" -f $_ }) -join ' ')
+        "{0} | {1}" -f ('prm (cnt/tot)'), (($hour_const | % { "{0:d2}" -f $_ }) -join ' ')
         "{0} | {1}" -f ('-'*13), ('---'*$hour_const.count)
     }
 
     # print matrix ordinary row
-    "{0} ({1:d2}\{2:d2})  | {3}" -f $prm, $prm_list[$prm].count, $hour_const.count, $row
+    "{0} ({1:d2}/{2:d2})  | {3}" -f $prm, $prm_list[$prm].count, $hour_const.count, $row
 
 }  # foreach
