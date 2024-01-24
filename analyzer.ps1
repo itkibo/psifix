@@ -33,7 +33,7 @@ if ($csv_save) {
 # key = parameter, value = array of hours
 # $prm_list will contain only existing parameters
 $prm_list = @{}
-foreach ($file in ($files = Get-Item -Path $source_path)) {
+foreach ($file in ($files = Get-ChildItem -Path $source_path -File)) {
 
     # file name example: 117-2235_2023-9-29_23
     # build row based on file name like: 117;2235;2023;9;29;23
