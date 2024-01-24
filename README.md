@@ -8,7 +8,10 @@ Fast determines missing files/parameters/hours and show result in matrix form
 # csv file will contain only existing parameters
 # matrix result shows all parameters existing + missing (gaps)
 
+# filter by mask
 .\analyzer.ps1 -source_path .\data\???-*.csv -csv_save
+# get all files from directory
+.\analyzer.ps1 -source_path .\data\ -csv_save
 ```
 
 `result example:`
