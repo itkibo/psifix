@@ -78,5 +78,5 @@ file_path; err_rownum
 .\data\dh_exmpl1\117-3374_2023-12-12_13.csv; 3
 .\data\dh_exmpl1\117-3446_2023-12-12_13.csv; 3
 files fixed: 22/530
-result: .\data\dh_exmpl1\dh_fixed
+result: .\data\dh_fixed
 ```
