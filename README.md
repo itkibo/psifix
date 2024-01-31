@@ -55,28 +55,72 @@ Shows incorrect files, error row and save fixed result in directory
 
 source: .\data\
 file_path; err_rownum
-.\data\dh_exmpl1\117-2235_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-2755_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3040_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3041_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3042_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3043_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3184_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3186_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3187_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3188_2023-12-12_13.csv; 6
-.\data\dh_exmpl1\117-3198_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3199_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3200_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3201_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3202_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3203_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3204_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3205_2023-12-12_13.csv; 2921
-.\data\dh_exmpl1\117-3283_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3319_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3374_2023-12-12_13.csv; 3
-.\data\dh_exmpl1\117-3446_2023-12-12_13.csv; 3
+.\data\117-2235_2023-12-12_13.csv; 3
+.\data\117-2755_2023-12-12_13.csv; 3
+.\data\117-3040_2023-12-12_13.csv; 3
+.\data\117-3041_2023-12-12_13.csv; 3
+.\data\117-3042_2023-12-12_13.csv; 3
+.\data\117-3043_2023-12-12_13.csv; 3
+.\data\117-3184_2023-12-12_13.csv; 3
+.\data\117-3186_2023-12-12_13.csv; 3
+.\data\117-3187_2023-12-12_13.csv; 3
+.\data\117-3188_2023-12-12_13.csv; 6
+.\data\117-3198_2023-12-12_13.csv; 3
+.\data\117-3199_2023-12-12_13.csv; 3
+.\data\117-3200_2023-12-12_13.csv; 3
+.\data\117-3201_2023-12-12_13.csv; 3
+.\data\117-3202_2023-12-12_13.csv; 3
+.\data\117-3203_2023-12-12_13.csv; 3
+.\data\117-3204_2023-12-12_13.csv; 3
+.\data\117-3205_2023-12-12_13.csv; 2921
+.\data\117-3283_2023-12-12_13.csv; 3
+.\data\117-3319_2023-12-12_13.csv; 3
+.\data\117-3374_2023-12-12_13.csv; 3
+.\data\117-3446_2023-12-12_13.csv; 3
 files fixed: 22/530
 result: .\data\dh_fixed
+```
+# gen_time.ps1
+It generates missed hours data files
+
+```
+# generate data files with hours in range 11..23 based on existing source 10-hour file
+.\gen_time.ps1 -source_path .\data\*.csv -hour_basic 10 -hours @(11..23)
+
+# result
+
+source: .\data\*.csv
+file: 117-2235_2024-1-26_10.csv
+result_path; gen_cnt; hour_basic; ratio; sec_ajust
+.\data\time_fixed\117-2235_2024-1-26_11.csv; 1; 10; 1 x 3600 = 3600
+.\data\time_fixed\117-2235_2024-1-26_12.csv; 1; 10; 2 x 3600 = 7200
+.\data\time_fixed\117-2235_2024-1-26_13.csv; 1; 10; 3 x 3600 = 10800
+.\data\time_fixed\117-2235_2024-1-26_14.csv; 1; 10; 4 x 3600 = 14400
+.\data\time_fixed\117-2235_2024-1-26_15.csv; 1; 10; 5 x 3600 = 18000
+.\data\time_fixed\117-2235_2024-1-26_16.csv; 1; 10; 6 x 3600 = 21600
+.\data\time_fixed\117-2235_2024-1-26_17.csv; 1; 10; 7 x 3600 = 25200
+.\data\time_fixed\117-2235_2024-1-26_18.csv; 1; 10; 8 x 3600 = 28800
+.\data\time_fixed\117-2235_2024-1-26_19.csv; 1; 10; 9 x 3600 = 32400
+.\data\time_fixed\117-2235_2024-1-26_20.csv; 1; 10; 10 x 3600 = 36000
+.\data\time_fixed\117-2235_2024-1-26_21.csv; 1; 10; 11 x 3600 = 39600
+.\data\time_fixed\117-2235_2024-1-26_22.csv; 1; 10; 12 x 3600 = 43200
+.\data\time_fixed\117-2235_2024-1-26_23.csv; 1; 10; 13 x 3600 = 46800
+
+source: .\data\*.csv
+file: 117-2755_2024-1-26_10.csv
+result_path; gen_cnt; hour_basic; ratio; sec_ajust
+.\data\time_fixed\117-2755_2024-1-26_11.csv; 1; 10; 1 x 3600 = 3600
+.\data\time_fixed\117-2755_2024-1-26_12.csv; 1; 10; 2 x 3600 = 7200
+.\data\time_fixed\117-2755_2024-1-26_13.csv; 1; 10; 3 x 3600 = 10800
+.\data\time_fixed\117-2755_2024-1-26_14.csv; 1; 10; 4 x 3600 = 14400
+.\data\time_fixed\117-2755_2024-1-26_15.csv; 1; 10; 5 x 3600 = 18000
+.\data\time_fixed\117-2755_2024-1-26_16.csv; 1; 10; 6 x 3600 = 21600
+.\data\time_fixed\117-2755_2024-1-26_17.csv; 1; 10; 7 x 3600 = 25200
+.\data\time_fixed\117-2755_2024-1-26_18.csv; 1; 10; 8 x 3600 = 28800
+.\data\time_fixed\117-2755_2024-1-26_19.csv; 1; 10; 9 x 3600 = 32400
+.\data\time_fixed\117-2755_2024-1-26_20.csv; 1; 10; 10 x 3600 = 36000
+.\data\time_fixed\117-2755_2024-1-26_21.csv; 1; 10; 11 x 3600 = 39600
+.\data\time_fixed\117-2755_2024-1-26_22.csv; 1; 10; 12 x 3600 = 43200
+.\data\time_fixed\117-2755_2024-1-26_23.csv; 1; 10; 13 x 3600 = 46800
+...
 ```
