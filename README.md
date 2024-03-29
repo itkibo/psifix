@@ -125,7 +125,7 @@ result_path; gen_cnt; hour_basic; ratio; sec_ajust
 ...
 ```
 # fix_regex.ps1
-It replaces broken strings in data files by regex patterns from config file
+It replaces broken strings in data files by regex patterns from config file 
 By default it reads replace rules from config file .\fix_regex_pattern.txt
 
 ```
