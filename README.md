@@ -124,3 +124,38 @@ result_path; gen_cnt; hour_basic; ratio; sec_ajust
 .\data\time_fixed\117-2755_2024-1-26_23.csv; 1; 10; 13 x 3600 = 46800
 ...
 ```
+# fix_regex.ps1
+It replaces broken strings in data files by regex patterns from config file
+By default it reads replace rules from config file .\fix_regex_pattern.txt
+
+```
+.\fix_regex.ps1 -source_path .\data\*.csv
+
+# result
+
+source: .\data\*.csv
+file_path; err_cnt
+.\data\117-3040_2023-9-29_17.csv; 743
+
+pat            val                hits
+---            ---                ----
+;\s+\d,[^\d]*; ;        0,000000;  371
+0,0            0.0                 372
+
+.\data\117-3040_2023-9-29_18.csv; 7200
+
+pat            val                hits
+---            ---                ----
+;\s+\d,[^\d]*; ;        0,000000; 3600
+0,0            0.0                3600
+
+.\data\117-3040_2023-9-29_19.csv; 7200
+
+pat            val                hits
+---            ---                ----
+;\s+\d,[^\d]*; ;        0,000000; 3600
+0,0            0.0                3600
+
+files fixed: 3/3
+result: .\data\regex_fixed
+```
